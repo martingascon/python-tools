@@ -1,4 +1,4 @@
-# PYTHON SCRIPT TO CALCULATE THE SIZE, CTIME AND PATH FOR EVERY FILE IN THIS DISK. 
+# "The Gasconator" IS A PYTHON SCRIPT TO CALCULATE THE SIZE, CTIME AND PATH FOR EVERY FILE IN A GIVEN DISK. 
 # SOME IMPORTS
 import os
 import pandas as pd
@@ -63,7 +63,7 @@ else:
 
 
 print "#####################################################################################"
-print "Starting the process of creating a nice file .... please wait" 
+print "THE GASCONATOR is initializing .... please wait" 
 print "#####################################################################################"
 print "Generating the list of files within your harddrive ... please wait"
 print "#####################################################################################"
