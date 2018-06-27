@@ -69,7 +69,7 @@ print "Generating the list of files within your harddrive ... please wait"
 print "#####################################################################################"
 print "You may find some files saying Permission denied  ... no worries "
 print "#####################################################################################"
-print "Separeting file from path, calculating size and creating time, extension .. please wait"
+print "Separating file from path, calculating size and creating time, extension .. please wait"
 
 # OPEN THE FILE LIST AND REMOVE \n characters
 lines2 = [line.rstrip() for line in open('list.txt')]
