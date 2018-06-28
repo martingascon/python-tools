@@ -34,8 +34,14 @@ def getSize(fullpath):
 def getCtime(fullpath):
 	try:
 		ctime = datetime.fromtimestamp(getmtime(fullpath)).strftime('%d/%m/%Y %H:%M')
-		#time.strftime('%m/%d/%Y', time.gmtime(os.path.getmtime(str(fullpath))))
 		return ctime
+	except:
+		return 0
+
+def getYear(fullpath):
+	try:
+		year = datetime.fromtimestamp(getmtime(fullpath)).strftime('%Y')
+		return year
 	except:
 		return 0
 
@@ -43,13 +49,13 @@ argc = len(sys.argv)
  
 if argc == 1:
 	pwd =  ""
-	proc1 = os.system('find "$PWD" -type f > list.txt')
+	proc1 = os.system("""find "$PWD" \( ! -regex '.*/\..*' \) -type f > list.txt""")
 
 elif argc == 2:
 	pwd = sys.argv[1]
 	print "SEARCHING IN THIS DIRECTORY: " + pwd
 	try:		
-		proc1 = os.system('find "$PWD" ' + pwd + ' -type f > list.txt')
+		proc1 = os.system("""find "$PWD" \( ! -regex '.*/\..*' \) ' + pwd + ' -type f > list.txt""")
 	except:
 		print " This directory is empty or there is something wrong in it."
 		sys.exit()
@@ -81,11 +87,12 @@ df2 = pd.DataFrame(lines2)
 df2.columns = ["FullPath"]
 
 # Add column into panda with only the name of the file
-df2['FileName'] = [extract_filename(path) for path in df2['FullPath']]
-df2['Ctime']    = [getCtime(path) for path in df2['FullPath']]
-df2['FileType'] = [extract_extension(path) for path in df2['FileName']]
+df2['FileName']    = [extract_filename(path) for path in df2['FullPath']]
+df2['Ctime']       = [getCtime(path) for path in df2['FullPath']]
+df2['FileType']    = [extract_extension(path) for path in df2['FileName']]
 df2['FileSize_MB'] = [getSize(path) for path in df2['FullPath']]
-df2['FilePath'] = [extract_filepath(path) for path in df2['FullPath']]
+df2['FilePath']    = [extract_filepath(path) for path in df2['FullPath']]
+df2['Year']        = [getYear(path) for path in df2['FullPath']]
 
 # REMOVE THE COLUMN FULLPATH, WE DON'T USE IT ANYMORE
 df2 = df2.drop(['FullPath'], axis=1)
@@ -104,7 +111,8 @@ proc2 = os.system('rm -rf list.txt')
 
 # Print the header
 # print(df2.head(1))
-
-print "TOTAL SIZE FOR ALL FILES IN THIS DIRECTORY: " + str(df2['FileSize_MB'].sum()/1024) + " GB"
+print "######################################  SUMMARY ###############################################"
+print "TOTAL SIZE FOR ALL FILES IN THIS DIRECTORY: " + str(df2['FileSize_MB'].sum()/1024) + " GB /" + str(df2['FileSize_MB'].sum()) + " MB"
+print "TOTAL NUMBER OF FILES IN THIS DIRECTORY: " + str(len(df2.index)) 
 print "Done! "
 print "#####################################################################################"
