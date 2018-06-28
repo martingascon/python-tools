@@ -1,4 +1,4 @@
-# PYTHON SCRIPT TO CALCULATE THE SIZE, CTIME AND PATH FOR EVERY FILE IN THIS DISK. 
+# "The Gasconator" IS A PYTHON SCRIPT TO CALCULATE THE SIZE, CTIME AND PATH FOR EVERY FILE IN A GIVEN DISK. 
 # SOME IMPORTS
 import os
 import pandas as pd
@@ -63,13 +63,13 @@ else:
 
 
 print "#####################################################################################"
-print "Starting the process of creating a nice file .... please wait" 
+print "THE GASCONATOR is initializing .... please wait" 
 print "#####################################################################################"
 print "Generating the list of files within your harddrive ... please wait"
 print "#####################################################################################"
 print "You may find some files saying Permission denied  ... no worries "
 print "#####################################################################################"
-print "Separeting file from path, calculating size and creating time, extension .. please wait"
+print "Separating file from path, calculating size and creating time, extension .. please wait"
 
 # OPEN THE FILE LIST AND REMOVE \n characters
 lines2 = [line.rstrip() for line in open('list.txt')]
