@@ -55,7 +55,7 @@ elif argc == 2:
 	pwd = sys.argv[1]
 	print "SEARCHING IN THIS DIRECTORY: " + pwd
 	try:		
-		proc1 = os.system("""find "$PWD" \( ! -regex '.*/\..*' \) ' + pwd + ' -type f > list.txt""")
+		proc1 = os.system("""find "$PWD" '""" + pwd + """' \( ! -regex '.*/\..*' \)  -type f > list.txt""")
 	except:
 		print " This directory is empty or there is something wrong in it."
 		sys.exit()
@@ -79,6 +79,7 @@ print "Separating file from path, calculating size and creating time, extension 
 
 # OPEN THE FILE LIST AND REMOVE \n characters
 lines2 = [line.rstrip() for line in open('list.txt')]
+
 
 # Put the full path into a panda
 df2 = pd.DataFrame(lines2)
