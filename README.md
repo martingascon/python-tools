@@ -36,7 +36,7 @@ $ python get-pip.py    (and hit "Enter." That should get you "pip")
 
 $ pip install pandas    (and hit "Enter." It will look like this)
 
-![Image1](/image2.png)
+![Image2](/image2.png)
 
 4) Navigate to the WET Labs Mexico GitHub page: https://github.com/WETlabsmexico
 
@@ -49,13 +49,13 @@ $ pip install pandas    (and hit "Enter." It will look like this)
 
 8) To run the GASCONATOR script, you need to "call directory" so that your Terminal is looking in the correct folder for the python script you want to use (remember, the one you just downloaded, called "ListTable.py"?). To do so, type: $ cd then drag the folder "Python" into Terminal, and hit "Enter." It will look something like this:
 
-![Image1](/image3.png)
+![Image3](/image3.png)
 
 Nothing will really happen, and you will get the $ prompt and the flashing cursor, which is the indicator that you are now "inside" that folder.
 
 9) Next, type: python ListTable.py  and drag the Hard Drive you want to analyze (in this example, the Hard Drive is called "Crucial") into the Terminal. It will look like this:
 
-![Image1](/image4.png)
+![Image4](/image4.png)
 
 10) Hit "Enter." It should work! Your resulting Excel inventory should appear in the same folder where your "ListTable.py" script is located.
 
